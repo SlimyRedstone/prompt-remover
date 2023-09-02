@@ -1,0 +1,25 @@
+{
+	"name": "Prompt Remover",
+	"version": "1.0.0",
+	"description": "Remove the cookies prompt when opening a google/youtube page for the 1st time or in incognito mode",
+	"manifest_version": 3,
+	"author": "SlimyRedstone",
+	"permissions": ["tabs", "activeTab", "declarativeContent", "scripting", "commands"],
+	"background": {
+		"service_worker": "background.js"
+	},
+	"content_scripts": [
+		{
+			"js": ["back_page.js"],
+			"css": ["back_page.css"],
+			"matches": [
+				"https://*.google.com/*",
+				"https://*.google.fr/*",
+				"https://*.youtube.com/*"
+			]   ,  
+			"all_frames": true,
+			"run_at": "document_start"
+		}
+	],
+	"action": {}
+}
